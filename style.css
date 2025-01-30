@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
+
+:root {
+    --width-circle: 150vw;
+    --radius: calc(100vw / 6)
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter, sans-serif;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+header {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 50px;
+    position: relative;
+    z-index: 10;
+    color: #eee;
+}
+
+ul {
+    list-style: none;
+}
+
+header ul {
+    display: flex;
+    gap: 30px
+}
+
+.slider {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-color: #17232A;
+    background-image: radial-gradient(#fff3, transparent 50%);
+    margin-top: -50px;
+}
+
+.slider .list {
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    transition: transform .8s;
+}
+
+.slider .list .item {
+    width: calc(var(--radius) * 2);
+    text-align: center;
+    transform: rotate(45deg);
+
+    transition: transform 1s;
+}
+
+.slider .list .item.active {
+    transform: rotate(0deg);
+}
+
+.slider .list .item img {
+    width: 80%;
+    filter: drop-shadow(0 0 20px #000);
+}
+
+.slider .content {
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #eee;
+    width: max-content;
+    text-transform: uppercase;
+    display: grid;
+    gap: 1rem;
+}
+
+.slider .content li:nth-child(2) {
+    font-size: clamp(2rem, 8vw, 5rem);
+    letter-spacing: 10px;
+    font-weight: bold;
+    position: relative;
+}
+
+.slider .content li:nth-child(2)::before {
+    content: "";
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 72%;
+    bottom: 50%;
+    background-image:
+        url("./img/leaves.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.slider .content li:nth-child(1) {
+    text-align: left;
+    background-color: transparent;
+    color: #eee;
+    letter-spacing: 5px;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.slider .content button {
+    border: 1px solid #eee5;
+    background-color: transparent;
+    color: #eee;
+    letter-spacing: 5px;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+#prev,
+#next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #eee5;
+    border: 1px solid #eee8;
+    color: #eee;
+    font-size: x-large;
+    z-index: 15;
+}
+
+#prev {
+    left: 20px;
+}
+
+#next {
+    right: 20px;
+}
+
+.circle {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-mask: radial-gradient(var(--radius),
+            transparent 100%, #000);
+
+    mask: radial-gradient(var(--radius),
+            transparent 100%, #000);
+    backdrop-filter: blur(10px);
+    background: radial-gradient(calc(var(--radius) + 1px),
+            #eee5 100%, #eee2);
+}
+
+
+.circle span {
+    display: block;
+    position: absolute;
+    height: calc(var(--radius) * 2 + 50px);
+    top: 50%;
+    left: 50%;
+    --rotate: 50deg;
+    transform: translate(-50%, -50%) rotate(var(--rotate));
+    text-transform: uppercase;
+    color: #fff;
+    font-size: small;
+    animation: circleRotate 20s linear infinite;
+}
+
+@keyframes circleRotate {
+    to {
+        transform: translate(-50%, -50%) rotate(calc(var(--rotate) + 360deg));
+    }
+}
