@@ -65,8 +65,7 @@ header ul {
 .slider .list .item {
     width: calc(var(--radius) * 2);
     text-align: center;
-    transform: rotate(45deg);
-
+    transform: rotate(90deg);
     transition: transform 1s;
 }
 
@@ -81,7 +80,7 @@ header ul {
 
 .slider .content {
     position: absolute;
-    bottom: 3%;
+    bottom: 2%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -89,7 +88,7 @@ header ul {
     width: max-content;
     text-transform: uppercase;
     display: grid;
-    gap: 1rem;
+    gap: .5rem;
 }
 
 .slider .content li:nth-child(2) {
